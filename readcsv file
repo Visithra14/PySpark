@@ -1,0 +1,6 @@
+
+python
+Copy
+Edit
+csv_df = spark.read.csv("sample.csv", header=True, inferSchema=True)
+csv_df.show()
