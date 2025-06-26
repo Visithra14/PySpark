@@ -1,4 +1,6 @@
-
+python
+Copy
+Edit
 data = [("Alice", 23), ("Bob", 30)]
 columns = ["Name", "Age"]
 
