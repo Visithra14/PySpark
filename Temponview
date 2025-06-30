@@ -1,0 +1,14 @@
+from pyspark.sql import SparkSession
+
+
+spark = SparkSession.builder.appName("TempViewExample").getOrCreate()
+
+data = [("Alice", "Math", 85), ("Alice", "English", 78),
+        ("Bob", "Math", 90), ("Bob", "English", 88)]
+df = spark.createDataFrame(data, ["name", "subject", "marks"])
+
+df.createOrReplaceTempView("students")
+
+#  SQL Query on TempView
+result = spark.sql("SELECT name, AVG(marks) as avg_marks FROM students GROUP BY name")
+result.show()
