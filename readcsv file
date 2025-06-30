@@ -1,6 +1,9 @@
+from pyspark.sql import SparkSession
 
-python
-Copy
-Edit
-csv_df = spark.read.csv("sample.csv", header=True, inferSchema=True)
-csv_df.show()
+spark = SparkSession.builder.appName("Example").getOrCreate()
+
+df = spark.read.csv("bigdata.csv", header=True, inferSchema=True)
+
+df_filtered = df.filter(df["age"] > 30).groupBy("city").count()
+
+df_filtered.show()
